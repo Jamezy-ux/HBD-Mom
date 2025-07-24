@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday, Mom!</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://i.imgur.com/vFAzXJC.png') no-repeat center center fixed;
+      background-size: cover;
+    }
+    #balloon {
+      position: absolute;
+      width: 100px;
+      height: auto;
+      transition: transform 0.1s linear;
+      pointer-events: none;
+    }
+    #message {
+      position: absolute;
+      top: 30px;
+      width: 100%;
+      text-align: center;
+      color: #fff;
+      font-size: 2em;
+      text-shadow: 2px 2px 4px #000;
+    }
+    #musicButton {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 10px 20px;
+      font-size: 1em;
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+    }
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: #ff0;
+      animation: fall 4s linear infinite;
+      border-radius: 50%;
+    }
+    @keyframes fall {
+      to {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="message">Happy Birthday, Mom! 🎉</div>
+  <img id="balloon" src="https://i.imgur.com/7W1DRNb.png" alt="Balloon" />
+  <button id="musicButton">Play Music</button>
+  <audio id="music" src="https://www.bensound.com/bensound-music/bensound-buddy.mp3"></audio>
+
+  <script>
+    const balloon = document.getElementById('balloon');
+    document.addEventListener('mousemove', (e) => {
+      balloon.style.transform = `translate(${e.pageX - 50}px, ${e.pageY - 100}px)`;
+    });
+
+    const button = document.getElementById('musicButton');
+    const music = document.getElementById('music');
+    button.addEventListener('click', () => {
+      music.play();
+      button.style.display = 'none';
+    });
+
+    // Confetti generator
+    function createConfetti() {
+      const confetti = document.createElement('div');
+      confetti.classList.add('confetti');
+      confetti.style.left = Math.random() * 100 + 'vw';
+      confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 70%)`;
+      confetti.style.animationDuration = (Math.random() * 2 + 3) + 's';
+      document.body.appendChild(confetti);
+      setTimeout(() => confetti.remove(), 5000);
+    }
+    setInterval(createConfetti, 200);
+  </script>
+</body>
+</html>
