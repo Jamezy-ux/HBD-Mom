@@ -9,14 +9,14 @@
       margin: 0;
       overflow: hidden;
       font-family: 'Segoe UI', sans-serif;
-      background: url('background.jpeg') no-repeat center center fixed;
+      background: url('background.jpg') no-repeat center center fixed;
       background-size: cover;
       color: white;
     }
 
     #balloon {
       position: absolute;
-      width: 100px;
+      width: 150px;
       height: auto;
       transition: transform 0.1s linear;
       pointer-events: none;
@@ -24,24 +24,40 @@
 
     #messageBox {
       position: absolute;
-      top: 20%;
-      left: 5%;
-      width: 40%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
       text-align: center;
       color: #fff;
       text-shadow: 2px 2px 4px #000;
     }
 
     #mainMessage {
-      font-size: 3em;
+      font-size: 4em;
       font-weight: bold;
-      margin-bottom: 1em;
+      margin-bottom: 0.5em;
+    }
+
+    .curved {
+      display: inline-block;
+      font-size: 2em;
+      transform: rotate(-10deg);
+      font-family: 'Brush Script MT', cursive;
+    }
+
+    .italic {
+      font-style: italic;
+      font-size: 3em;
+      font-family: 'Georgia', serif;
+      display: block;
     }
 
     #subMessage {
-      font-size: 1.4em;
-      line-height: 1.8em;
+      font-size: 1.8em;
+      margin-top: 2em;
       white-space: pre-line;
+      line-height: 1.8em;
     }
 
     #musicButton {
@@ -49,8 +65,8 @@
       bottom: 30px;
       left: 50%;
       transform: translateX(-50%);
-      padding: 10px 20px;
-      font-size: 1em;
+      padding: 12px 24px;
+      font-size: 1.2em;
       background-color: #ff69b4;
       color: white;
       border: none;
@@ -78,7 +94,10 @@
 </head>
 <body>
   <div id="messageBox">
-    <div id="mainMessage">Happy Birthday, Mom! 🎉</div>
+    <div id="mainMessage">
+      <div class="curved">Happy Birthday</div>
+      <div class="italic">Mom! 🎉</div>
+    </div>
     <div id="subMessage">
       Happy Birthday Mom! Take it easy today.
       You deserve it. Thank you for everything,
@@ -93,7 +112,7 @@
   <script>
     const balloon = document.getElementById('balloon');
     document.addEventListener('mousemove', (e) => {
-      balloon.style.transform = `translate(${e.pageX - 50}px, ${e.pageY - 100}px)`;
+      balloon.style.transform = `translate(${e.pageX - 75}px, ${e.pageY - 75}px)`;
     });
 
     const button = document.getElementById('musicButton');
