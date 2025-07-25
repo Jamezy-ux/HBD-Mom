@@ -9,9 +9,11 @@
       margin: 0;
       overflow: hidden;
       font-family: 'Segoe UI', sans-serif;
-      background: url('<a href="https://www.vecteezy.com/photo/26771252-pink-holiday-birthday-background-with-cake">pink-holiday-birthday-background-with-cake Stock photos by Vecteezy</a>') no-repeat center center fixed;
+      background: url('background.jpg') no-repeat center center fixed;
       background-size: cover;
+      color: white;
     }
+
     #balloon {
       position: absolute;
       width: 100px;
@@ -19,15 +21,29 @@
       transition: transform 0.1s linear;
       pointer-events: none;
     }
-    #message {
+
+    #messageBox {
       position: absolute;
-      top: 30px;
-      width: 100%;
+      top: 20%;
+      left: 5%;
+      width: 40%;
       text-align: center;
       color: #fff;
-      font-size: 2em;
       text-shadow: 2px 2px 4px #000;
     }
+
+    #mainMessage {
+      font-size: 3em;
+      font-weight: bold;
+      margin-bottom: 1em;
+    }
+
+    #subMessage {
+      font-size: 1.4em;
+      line-height: 1.8em;
+      white-space: pre-line;
+    }
+
     #musicButton {
       position: absolute;
       bottom: 30px;
@@ -42,6 +58,7 @@
       cursor: pointer;
       box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
     }
+
     .confetti {
       position: absolute;
       width: 10px;
@@ -50,6 +67,7 @@
       animation: fall 4s linear infinite;
       border-radius: 50%;
     }
+
     @keyframes fall {
       to {
         transform: translateY(100vh);
@@ -59,10 +77,18 @@
   </style>
 </head>
 <body>
-  <div id="message">Happy Birthday, Mom! 🎉</div>
-  <img id="balloon" src="https://i.imgur.com/7W1DRNb.png" alt="Balloon" />
+  <div id="messageBox">
+    <div id="mainMessage">Happy Birthday, Mom! 🎉</div>
+    <div id="subMessage">
+      Happy Birthday Mom! Take it easy today.
+      You deserve it. Thank you for everything,
+      Wishing you a wonderful day!
+    </div>
+  </div>
+
+  <img id="balloon" src="balloon.png" alt="Balloon" />
   <button id="musicButton">Play Music</button>
-  <audio id="music" src="https://www.bensound.com/bensound-music/bensound-buddy.mp3"></audio>
+  <audio id="music" src="music.mp3"></audio>
 
   <script>
     const balloon = document.getElementById('balloon');
@@ -77,7 +103,6 @@
       button.style.display = 'none';
     });
 
-    // Confetti generator
     function createConfetti() {
       const confetti = document.createElement('div');
       confetti.classList.add('confetti');
@@ -87,6 +112,7 @@
       document.body.appendChild(confetti);
       setTimeout(() => confetti.remove(), 5000);
     }
+
     setInterval(createConfetti, 200);
   </script>
 </body>
