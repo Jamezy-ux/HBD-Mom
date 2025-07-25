@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Happy Birthday, Mom!</title>
   <style>
     body {
@@ -16,9 +16,9 @@
 
     #balloon {
       position: absolute;
-      width: 250px; /* bigger balloon */
+      width: 250px;
       height: auto;
-      transition: transform 0.05s linear;
+      transition: transform 0.1s linear;
       pointer-events: none;
     }
 
@@ -27,45 +27,56 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 90%;
       text-align: center;
       color: #fff;
       text-shadow: 2px 2px 4px #000;
+      max-width: 90%;
     }
 
     #mainMessage {
-      font-size: 4em;
-      font-weight: bold;
-      margin-bottom: 0.5em;
+      margin-bottom: 1em;
     }
 
-    .curved {
-      display: inline-block;
+    .curved-text {
+      font-size: 3em;
+      font-family: 'Brush Script MT', cursive;
+      display: block;
+      margin-bottom: 0.2em;
+      position: relative;
+    }
+
+    .curved-text::before {
+      content: "Happy Birthday";
+      display: block;
+      width: 100%;
       font-size: 3em;
       font-family: 'Brush Script MT', cursive;
       transform: rotate(0deg);
-      animation: arcCurve 5s forwards;
-      display: block;
-      margin-bottom: 0.2em;
+      text-align: center;
+      animation: curveUp 2s ease-out forwards;
     }
 
-    @keyframes arcCurve {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(0deg); }
+    @keyframes curveUp {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(-2deg);
+      }
     }
 
     .italic {
       font-style: italic;
       font-size: 4em;
-      font-family: 'Pacifico', cursive;
-      display: block;
+      font-family: 'Georgia', serif;
+      color: #ffe4e1;
     }
 
     #subMessage {
-      font-size: 2em;
+      font-size: 1.8em;
       margin-top: 2em;
       white-space: pre-line;
-      line-height: 1.8em;
+      line-height: 1.6em;
     }
 
     #musicButton {
@@ -99,18 +110,16 @@
       }
     }
   </style>
-  <!-- Load Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 </head>
 <body>
   <div id="messageBox">
     <div id="mainMessage">
-      <div class="curved">Happy Birthday</div>
+      <div class="curved-text"></div>
       <div class="italic">Mom! 🎉</div>
     </div>
     <div id="subMessage">
-      Happy Birthday Mom! Take it easy today.
-      You deserve it. Thank you for everything,
+      Happy Birthday Mom! Take it easy today. <br>
+      You deserve it. Thank you for everything, <br>
       Wishing you a wonderful day!
     </div>
   </div>
@@ -122,7 +131,7 @@
   <script>
     const balloon = document.getElementById('balloon');
     document.addEventListener('mousemove', (e) => {
-      balloon.style.transform = `translate(${e.pageX - 125}px, ${e.pageY - 30}px)`; // now more under the cursor
+      balloon.style.transform = `translate(${e.pageX - 125}px, ${e.pageY - 100}px)`;
     });
 
     const button = document.getElementById('musicButton');
