@@ -34,27 +34,27 @@
     }
 
     #mainMessage {
-      font-size: 3em;
+      font-size: 2em;
       font-weight: bold;
       margin-bottom: 0.3em;
     }
 
     .curved {
       display: inline-block;
-      font-size: 1.8em;
+      font-size: 1.5em;
       transform: rotate(-10deg);
       font-family: 'Brush Script MT', cursive;
     }
 
     .italic {
       font-style: italic;
-      font-size: 2.5em;
+      font-size: 2em;
       font-family: 'Georgia', serif;
       display: block;
     }
 
     #subMessage {
-      font-size: 1.5em;
+      font-size: 1.2em;
       margin-top: 2em;
       white-space: pre-line;
       line-height: 1.6em;
@@ -112,7 +112,7 @@
   <script>
     const balloon = document.getElementById('balloon');
     document.addEventListener('mousemove', (e) => {
-      balloon.style.transform = `translate(${e.pageX - 75}px, ${e.pageY - 50}px)`;
+      balloon.style.transform = `translate(${e.pageX - 75}px, ${e.pageY - 75}px)`;
     });
 
     const button = document.getElementById('musicButton');
