@@ -16,9 +16,9 @@
 
     #balloon {
       position: absolute;
-      width: 150px;
+      width: 250px; /* bigger balloon */
       height: auto;
-      transition: transform 0.1s linear;
+      transition: transform 0.05s linear;
       pointer-events: none;
     }
 
@@ -27,7 +27,7 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 80%;
+      width: 90%;
       text-align: center;
       color: #fff;
       text-shadow: 2px 2px 4px #000;
@@ -41,20 +41,28 @@
 
     .curved {
       display: inline-block;
-      font-size: 2em;
-      transform: rotate(-10deg);
+      font-size: 3em;
       font-family: 'Brush Script MT', cursive;
+      transform: rotate(0deg);
+      animation: arcCurve 5s forwards;
+      display: block;
+      margin-bottom: 0.2em;
+    }
+
+    @keyframes arcCurve {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(0deg); }
     }
 
     .italic {
       font-style: italic;
-      font-size: 3em;
-      font-family: 'Georgia', serif;
+      font-size: 4em;
+      font-family: 'Pacifico', cursive;
       display: block;
     }
 
     #subMessage {
-      font-size: 1.8em;
+      font-size: 2em;
       margin-top: 2em;
       white-space: pre-line;
       line-height: 1.8em;
@@ -91,6 +99,8 @@
       }
     }
   </style>
+  <!-- Load Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 </head>
 <body>
   <div id="messageBox">
@@ -112,7 +122,7 @@
   <script>
     const balloon = document.getElementById('balloon');
     document.addEventListener('mousemove', (e) => {
-      balloon.style.transform = `translate(${e.pageX - 75}px, ${e.pageY - 75}px)`;
+      balloon.style.transform = `translate(${e.pageX - 125}px, ${e.pageY - 30}px)`; // now more under the cursor
     });
 
     const button = document.getElementById('musicButton');
